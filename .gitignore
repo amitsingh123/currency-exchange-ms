@@ -1,0 +1,4 @@
+/target/
+/spring-cloud-config-server/.mvn/
+/netflix-zuul-api-gateway-server/.mvn/
+/.idea/
