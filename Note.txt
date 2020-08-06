@@ -8,3 +8,7 @@ http://localhost:8000/currency-exchange/from/USD/to/INR
 Conversion Service:
 http://localhost:8100/currency-convert/from/USD/to/INR/quantity/20
 http://localhost:8100/currency-convert-feign/from/USD/to/INR/quantity/20
+
+For Zipkin server on window:-
+set RABBIT_URI=amqp://localhost
+java -jar zipkin-server-2.7.0-exec.jar

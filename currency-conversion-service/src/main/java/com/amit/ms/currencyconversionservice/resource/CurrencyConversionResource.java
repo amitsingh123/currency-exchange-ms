@@ -2,6 +2,8 @@ package com.amit.ms.currencyconversionservice.resource;
 
 import com.amit.ms.currencyconversionservice.model.CurrencyConversion;
 import com.amit.ms.currencyconversionservice.proxy.CurrencyExchangeServiceProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import java.util.Map;
 
 @RestController
 public class CurrencyConversionResource {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     RestTemplate restTemplate;
@@ -36,6 +40,7 @@ public class CurrencyConversionResource {
     @GetMapping (path="/currency-convert-feign/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversion convertCurrencyFeign(@PathVariable String from,@PathVariable String to,@PathVariable BigDecimal quantity){
         CurrencyConversion response = proxy.getCurrencyExchangeValue(from,to);
+        logger.info("{}"+response);
         return new CurrencyConversion
                 (response.getId(),from,to, response.getConversionMultiple(),quantity,quantity.multiply(response.getConversionMultiple()),response.getPort());
     }
