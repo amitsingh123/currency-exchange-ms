@@ -19,3 +19,7 @@ http://127.0.0.1:9411/zipkin
 Create Multiple Instance of a service in local
 duplicate a service and add below similar confi in vm options
 -Dserver.port=8001
+
+Cloud Service Bus
+Disable security for all :- management.endpoints.web.exposure.include=*
+Post :- http://localhost:8080/actuator/bus-refresh
